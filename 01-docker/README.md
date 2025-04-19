@@ -117,6 +117,90 @@ docker build -t rcbinator-web-app .
 
 ---
 
+<details><summary><b>Essential Docker Commands with Common Flags</b>
+</summary>
+
+
+#### 🔧 Basics
+
+- **Check Docker version**
+  ```bash
+  docker --version
+  ```
+
+- **List containers & images**
+  ```bash
+  docker ps -a        # All containers (running + stopped)
+  docker images       # All local images
+  ```
+
+#### 🚀 Run & Manage Containers
+
+- **Run container**
+  ```bash
+  docker run -d -p 3000:3000 --name myapp <image>
+  ```
+  - `-d`: Detached mode  
+  - `-p`: Port mapping (`host:container`)  
+  - `--name`: Custom container name  
+
+- **Run with volume (bind mount)**
+  ```bash
+  docker run -v $(pwd):/app <image>
+  ```
+  - `-v`: Mounts current dir to `/app` in container  
+
+- **Interactive shell in running container**
+  ```bash
+  docker exec -it <container> /bin/bash
+  ```
+  - `-it`: Interactive + TTY shell access  
+
+- **Auto-remove after exit**
+  ```bash
+  docker run --rm <image>
+  ```
+
+- **Start / Stop / Remove container**
+  ```bash
+  docker start <container>
+  docker stop <container>
+  docker rm <container>
+  ```
+
+#### 🖼️ Image Management
+
+- **Build image**
+  ```bash
+  docker build -t myapp:latest .
+  ```
+  - `-t`: Tag the image (e.g., `name:tag`)  
+
+- **Pull / Remove image**
+  ```bash
+  docker pull <image>
+  docker rmi <image>
+  ```
+
+#### 🧹 Clean Up
+
+- **Remove unused resources**
+  ```bash
+  docker system prune
+  ```
+
+---
+
+> 🧠 Pro Tip: Combine `--rm`, `-v`, and `-it` for quick testing:
+> ```bash
+> docker run --rm -v $(pwd):/app -it <image> /bin/bash
+> ```
+
+
+</details>
+
+---
+
 ### 3. Run the Docker Container
 
 ```bash
